@@ -2,6 +2,9 @@
 Data Strucutre and Algorithum using python
 
 Types of problem
--Knapsack problem (using Transform and Conquer method)
+
+-Knapsack problem (Dynamic Programming)
+
 -Fibonacci problem (using Divide and Conquer method)
--Hasttable with linear probing method
+
+-Hasttable (Linear Probing method)
