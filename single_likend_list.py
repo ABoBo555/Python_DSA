@@ -199,6 +199,70 @@ class Linkedlist:
                 prev = node
             node = prev.next
 
+    def nth_from_last_node(self, nth, method):
+        if method == 1:
+            llist_len = self.len_iterative_way()
+            node = self.head
+            while node and nth > 0 and nth <= llist_len:
+                if llist_len == nth:
+                    return node.data
+                llist_len -= 1
+                node = node.next
+            else:
+                return
+
+        if method == 2:
+            p = self.head
+            q = self.head
+
+            if nth > 0:
+                count = 0
+                while q:
+                    count += 1
+                    if count == nth:
+                        break
+                    q = q.next
+
+                if not q:
+                    return "The nth value is greater than the len of llist"
+
+                while p and q.next:
+                    p = p.next
+                    q = q.next
+                return p.data
+            else:
+                return
+
+    def count_occurrence_of_one_node(self, nodedata):
+
+        node = self.head
+        count = 0
+        while node:
+            if node.data == nodedata:
+                count += 1
+            node = node.next
+        return count
+
+    def count_occurrence_of_one_node(self, node, nodedata):
+        if node:
+            if node.data == nodedata:
+                return 1 + count_occurrence_of_one_node(node.next, nodedata)
+            else:
+                return count_occurrence_of_one_node(node.next, nodedata)
+        else:
+            return
+
+    def count_occurrence_of_all_node(self):
+        node = self.head
+        count = dict()
+        while node:
+            if node.data not in count:
+                count[node.data] = 1
+            else:
+                count[node.data] += 1
+            node = node.next
+        return count
+
 
 llist = Linkedlist()
 llist.prepend("Head")
@@ -208,7 +272,19 @@ llist.append("C")
 llist.append("C")
 llist.append("A")
 
+
 llist.print_list()
+
+print("This is count of all node : ", end=" ")
+print(llist.count_occurrence_of_all_node())
+
+print("This is count of 'A' node : ", end=" ")
+print(llist.count_occurrence_of_one_node("A"))
+
+print("This 2th node from last : ", end=" ")
+# print(llist.nth_from_last_node(3, 2))
+print(llist.nth_from_last_node(2, 1))
+
 
 llist.remove_duplicates()
 print("This is removing duplicates from llist", end=" ")
