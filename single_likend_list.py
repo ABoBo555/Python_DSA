@@ -185,12 +185,34 @@ class Linkedlist:
 
         return self.head
 
+    def remove_duplicates(self):
+        node = self.head
+        prev = None
+        dict_for_dup = dict()
+
+        while node:
+            if node.data in dict_for_dup:
+                prev.next = node.next
+                node = None
+            else:
+                dict_for_dup[node.data] = 1
+                prev = node
+            node = prev.next
+
 
 llist = Linkedlist()
 llist.prepend("Head")
 llist.append("A")
 llist.append("B")
 llist.append("C")
+llist.append("C")
+llist.append("A")
+
+llist.print_list()
+
+llist.remove_duplicates()
+print("This is removing duplicates from llist", end=" ")
+llist.print_list()
 
 llist2 = Linkedlist()
 llist2.prepend(1)
