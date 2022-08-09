@@ -243,14 +243,16 @@ class Linkedlist:
             node = node.next
         return count
 
-    def count_occurrence_of_one_node(self, node, nodedata):
+    def count_occurrence_of_one_node_recursive(self, node, nodedata):
         if node:
             if node.data == nodedata:
-                return 1 + count_occurrence_of_one_node(node.next, nodedata)
+                return 1 + self.count_occurrence_of_one_node_recursive(
+                    node.next, nodedata
+                )
             else:
-                return count_occurrence_of_one_node(node.next, nodedata)
+                return self.count_occurrence_of_one_node_recursive(node.next, nodedata)
         else:
-            return
+            return 0
 
     def count_occurrence_of_all_node(self):
         node = self.head
@@ -262,6 +264,28 @@ class Linkedlist:
                 count[node.data] += 1
             node = node.next
         return count
+
+    def rotate(self, point):
+        if self.head and self.head.next:
+            p = self.head
+            q = self.head
+            count = 0
+            prev = None
+            while p and count < point:
+                prev = p
+                p = p.next
+                q = q.next
+                count += 1
+            p = prev
+
+            while q:
+                prev = q
+                q = q.next
+            q = prev
+
+            q.next = self.head
+            self.head = p.next
+            p.next = None
 
 
 llist = Linkedlist()
@@ -280,6 +304,7 @@ print(llist.count_occurrence_of_all_node())
 
 print("This is count of 'A' node : ", end=" ")
 print(llist.count_occurrence_of_one_node("A"))
+# print(llist.count_occurrence_of_one_node_recursive(llist.head, "A"))
 
 print("This 2th node from last : ", end=" ")
 # print(llist.nth_from_last_node(3, 2))
@@ -361,4 +386,8 @@ llist.print_list()
 
 llist.swap_nodes("C", "C")
 print("Swapping nodes C and C where both keys are same : ", end=" ")
+llist.print_list()
+
+llist.rotate(3)
+print("This is rotate a llist at point C : ", end=" ")
 llist.print_list()
