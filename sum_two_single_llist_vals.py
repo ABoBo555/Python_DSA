@@ -51,24 +51,27 @@ class Linkedlist:
             temp_node = nxt
         self.head = prev
 
-    def sum_two_list_method2(self, llist2):
-        node_l1 = self.head
-        node_l2 = llist2.head
-        list_one = []
-        list_two = []
 
-        while node_l1 and node_l2:
-            list_one.append(str(node_l1.data))
-            list_two.append(str(node_l2.data))
-            node_l1 = node_l1.next
-            node_l2 = node_l2.next
+# this method can be applied only if len(llist1) == len(llist2)
 
-        list_one = list_one[::-1]
-        list_two = list_two[::-1]
-        value_one = "".join(list_one)
-        value_two = "".join(list_two)
-        result = int(value_one) + int(value_two)
-        return result
+# def sum_two_list_method2(self, llist2):
+#     node_l1 = self.head
+#     node_l2 = llist2.head
+#     list_one = []
+#     list_two = []
+
+#     while node_l1 and node_l2:
+#         list_one.append(str(node_l1.data))
+#         list_two.append(str(node_l2.data))
+#         node_l1 = node_l1.next
+#         node_l2 = node_l2.next
+
+#     list_one = list_one[::-1]
+#     list_two = list_two[::-1]
+#     value_one = "".join(list_one)
+#     value_two = "".join(list_two)
+#     result = int(value_one) + int(value_two)
+#     return result
 
 
 def sum_two_list(list1, list2):
