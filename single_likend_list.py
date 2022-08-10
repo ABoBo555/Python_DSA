@@ -287,17 +287,82 @@ class Linkedlist:
             self.head = p.next
             p.next = None
 
+    def is_palindrome(self, method):
+        if method == 1:
+            node = self.head
+            data_list = []
+            while node:
+                data_list.append(node.data)
+                node = node.next
+            return data_list == data_list[::-1]
+
+        if method == 2:
+            node = self.head
+            data_list = []
+            while node:
+                data_list.append(node.data)
+                node = node.next
+
+            node = self.head
+            while node:
+                if node.data != data_list.pop():
+                    return False
+                node = node.next
+            return True
+
+        if method == 3:
+            if self.head:
+                node = self.head
+                data_list = []
+                i = 0
+                while node:
+                    data_list.append(node.data)
+                    node = node.next
+                    i += 1
+                node = self.head
+                count = 1
+                while count <= (i // 2 + 1):
+                    if data_list[-count] != node.data:
+                        return False
+                    node = node.next
+                    count += 1
+                return True
+            else:
+                return True
+
+    def head_tail_swap(self):
+        head_node = self.head
+        node = self.head
+        sec_prev = None, None
+
+        while node and node.next:
+            sec_prev = node
+            node = node.next
+
+        node.next = head_node.next
+        head_node.next = None
+        sec_prev.next = head_node
+        self.head = node
+
 
 llist = Linkedlist()
 llist.prepend("Head")
 llist.append("A")
 llist.append("B")
-llist.append("C")
-llist.append("C")
-llist.append("A")
+llist.append("Z")
+llist.append("B")
+llist.append("O")
+# llist.append("Head")
 
 
 llist.print_list()
+
+print("This is head and tail swap : ", end=" ")
+llist.head_tail_swap()
+llist.print_list()
+
+print("Is this llist palindrome : ", end="")
+print(llist.is_palindrome(3))
 
 print("This is count of all node : ", end=" ")
 print(llist.count_occurrence_of_all_node())
