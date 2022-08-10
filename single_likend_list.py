@@ -333,7 +333,7 @@ class Linkedlist:
     def head_tail_swap(self):
         head_node = self.head
         node = self.head
-        sec_prev = None, None
+        sec_prev = None
 
         while node and node.next:
             sec_prev = node
