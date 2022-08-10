@@ -344,6 +344,19 @@ class Linkedlist:
         sec_prev.next = head_node
         self.head = node
 
+    def move_tail_to_head(self):
+        head_node = self.head
+        node = self.head
+        sec_prev = None
+
+        while node and node.next:
+            sec_prev = node
+            node = node.next
+
+        node.next = head_node
+        sec_prev.next = None
+        self.head = node
+
 
 llist = Linkedlist()
 llist.prepend("Head")
@@ -359,6 +372,7 @@ llist.print_list()
 
 print("This is head and tail swap : ", end=" ")
 llist.head_tail_swap()
+# llist.move_tail_to_head()
 llist.print_list()
 
 print("Is this llist palindrome : ", end="")
