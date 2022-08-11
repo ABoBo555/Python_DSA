@@ -10,10 +10,10 @@ class Test:
         self.items.append(item)
 
     def is_empty(self):
-        print(self)
-        print(self.items)
+        # print(self)
+        # print(self.items)
         return False, True
-        # in python it can return more than 1 var but only true is accepted see @peek() if clauses
+        # in python it can return more than 1 val but only true is accepted see @peek() if clauses
         # even you try return True, False
 
     def peek(self):
