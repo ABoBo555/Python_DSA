@@ -9,6 +9,8 @@ contacts = [
     ("Maria", 1718),
 ]
 
+print("This is contacts list : ", contacts)
+
 
 def my_hash_function(key):
     return len(key) % TABLE_SIZE
@@ -49,4 +51,4 @@ for contact in contacts:
 
 print(my_hash_table)
 
-print(lookup("LittleBob", my_hash_table))
+print(lookup("Jo", my_hash_table))
