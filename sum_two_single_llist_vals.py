@@ -1,3 +1,5 @@
+from single_likend_list import Linkedlist
+
 # llist.append(8)
 # llist.append(7)
 # llist.append(5)
@@ -9,47 +11,10 @@
 # llist => 8(ones place) / 7(tens place) / 5(hundreds place)
 # llist2 => 4(ones place) / 5(tens place) / 6(hundreds place)
 
-#     5 7 8
-#    +6 5 4
-#     -----
-#   1 2 3 2
-
-
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class Linkedlist:
-    def __init__(self):
-        self.head = None
-
-    def append(self, data):
-        new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
-            return
-        last_node = self.head
-        while last_node.next:
-            last_node = last_node.next
-        last_node.next = new_node
-
-    def print_list(self):
-        cur_node = self.head
-        while cur_node:
-            print(cur_node.data, end=" ")
-            cur_node = cur_node.next
-
-    def reverse_llist_iterative(self):
-        temp_node = self.head
-        prev = None
-        while temp_node:
-            nxt = temp_node.next
-            temp_node.next = prev
-            prev = temp_node
-            temp_node = nxt
-        self.head = prev
+#     5 7 8   3 6 9
+#    +6 5 4     4 1
+#     -----   -----
+#   1 2 3 2   4 1 0
 
 
 # this method can be applied only if len(llist1) == len(llist2)
@@ -100,30 +65,30 @@ def sum_two_list(list1, list2):
     return result
 
 
-llist = Linkedlist()
-llist.append(8)
-llist.append(7)
-llist.append(5)
+llist_1 = Linkedlist()
+llist_1.append(8)
+llist_1.append(7)
+llist_1.append(5)
 
 # llist => 8(ones place) / 7(tens place) / 5(hundreds place)
 # llist2 => 4(ones place) / 5(tens place) / 6(hundreds place)
 
-llist2 = Linkedlist()
-llist2.append(4)
-llist2.append(5)
-llist2.append(6)
+llist_2 = Linkedlist()
+llist_2.append(2)
+llist_2.append(5)
+llist_2.append(6)
 
-llist.reverse_llist_iterative()  # reverse both list to get in hundred,ten,one format
-llist2.reverse_llist_iterative()
+llist_1.reverse_llist_iterative()  # reverse both list to get in hundred,ten,one format
+llist_2.reverse_llist_iterative()
 
 print("This is reverse llist1: ", end=" ")
-llist.print_list()
+llist_1.print_list()
 
 print()
 
 print("This is reverse llist2: ", end=" ")
-llist2.print_list()
+llist_2.print_list()
 
 print()
 
-print("This is sum of two llist: ", sum_two_list(llist, llist2))  # calling sum fun
+print("This is sum of two llist: ", sum_two_list(llist_1, llist_2))  # calling sum fun

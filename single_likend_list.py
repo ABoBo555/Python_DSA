@@ -358,22 +358,29 @@ class Linkedlist:
         self.head = node
 
 
+# Testing
+
 llist = Linkedlist()
-llist.prepend("Head")
+llist.prepend("H")
 llist.append("A")
 llist.append("B")
+llist.append("C")
+llist.append("Y")
 llist.append("Z")
 llist.append("B")
 llist.append("O")
-# llist.append("Head")
 
 
 llist.print_list()
 
-print("This is head and tail swap : ", end=" ")
 llist.head_tail_swap()
-# llist.move_tail_to_head()
+print("This is head and tail swap : ", end=" ")
 llist.print_list()
+
+llist.move_tail_to_head()
+print("This is moving tail-node to head : ", end=" ")
+llist.print_list()
+
 
 print("Is this llist palindrome : ", end="")
 print(llist.is_palindrome(3))
@@ -391,8 +398,68 @@ print(llist.nth_from_last_node(2, 1))
 
 
 llist.remove_duplicates()
-print("This is removing duplicates from llist", end=" ")
+print("This is removing duplicates from llist : ", end=" ")
 llist.print_list()
+
+print("This is reversing the linkedlist by iterative : ", end=" ")
+llist.reverse_llist_iterative()
+llist.print_list()
+
+print("This is re-reversing the linkedlist by recursive : ", end=" ")
+llist.reverse_llist_recursive()
+llist.print_list()
+
+llist.insert_new_node(llist.head.next.next.next, "D")
+# llist.insert_new_node(llist.head, "N") #insert after head node
+# llist.insert_new_node(llist.head.next, "N") #insert after A node head.next is A object
+# llist.insert_new_node(llist.head.next.next, "N") #insert after B node head.next.next is B object
+# llist.insert_new_node(llist.head.next.next.next, "N") #insert after C node head.next.next.next is C object
+print("This is inserting new node D : ", end=" ")
+llist.print_list()
+
+
+llist.delete_by_value("D")
+print("This is delete by value D : ", end=" ")
+llist.print_list()
+
+llist.delete_by_position(5)
+print("This is delete by position-5 'Y' :", end=" ")
+llist.print_list()
+
+print("Length of the linkedlist by recursively:", llist.len_recursive_way(llist.head))
+print("Length of the linkedlist by iterative:", llist.len_iterative_way())
+
+print("Original list of before swapping : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("B", "C")
+print("Swapping nodes B and C  : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("Z", "A")
+print("Swapping nodes Z and A  : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("H", "C")
+print("Swapping nodes H and C where key_1 is head node : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("A", "B")
+print("Swapping nodes A and B where key_1 is last node : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("C", "B")
+print("Swapping nodes C and B where key_1-head,key_2-last node : ", end=" ")
+llist.print_list()
+
+llist.swap_nodes("C", "C")
+print("Swapping nodes C and C where both keys are same : ", end=" ")
+llist.print_list()
+
+llist.rotate(3)
+print("This is rotate a llist at point H : ", end=" ")
+llist.print_list()
+
 
 llist2 = Linkedlist()
 llist2.prepend(1)
@@ -409,64 +476,3 @@ llist3.append(8)
 llist2.merge_two_sorted_llsit(llist3)
 print("This is merging linkedlist 2&3 with merge_2sorted_llist_fun : ", end=" ")
 llist2.print_list()
-
-
-print("This is reversing the linkedlist by iterative : ", end=" ")
-llist.reverse_llist_iterative()
-
-llist.print_list()
-
-print("This is re-reversing the linkedlist by recursive : ", end=" ")
-llist.reverse_llist_recursive()
-
-llist.print_list()
-
-llist.insert_new_node(llist.head.next.next.next, "D")
-# llist.insert_new_node(llist.head, "N") #insert after head node
-# llist.insert_new_node(llist.head.next, "N") #insert after A node head.next is A object
-# llist.insert_new_node(llist.head.next.next, "N") #insert after B node head.next.next is B object
-# llist.insert_new_node(llist.head.next.next.next, "N") #insert after C node head.next.next.next is C object
-print("This is inserting new node : ", end=" ")
-llist.print_list()
-
-
-llist.delete_by_value("D")
-# # llist.delete_by_position(0)
-
-# llist.print_list()
-
-print(
-    "The length of the linked list calculated recursively after inserting 4 elements is:",
-    llist.len_recursive_way(llist.head),
-)
-print(
-    "The length of the linked list calculated iteratively after inserting 4 elements is:",
-    llist.len_iterative_way(),
-)
-
-print("Original list of before swapping : ", end=" ")
-llist.print_list()
-
-llist.swap_nodes("B", "C")
-print("Swapping nodes B and C that are not head nodes : ", end=" ")
-llist.print_list()
-
-llist.swap_nodes("A", "B")
-print("Swapping nodes A and B where key_1 is head node : ", end=" ")
-llist.print_list()
-
-llist.swap_nodes("A", "Head")
-print("Swapping nodes A and Head where key_2 is head node : ", end=" ")
-llist.print_list()
-
-llist.swap_nodes("D", "B")
-print("Swapping nodes D and B where D is not a node : ", end=" ")
-llist.print_list()
-
-llist.swap_nodes("C", "C")
-print("Swapping nodes C and C where both keys are same : ", end=" ")
-llist.print_list()
-
-llist.rotate(3)
-print("This is rotate a llist at point C : ", end=" ")
-llist.print_list()
