@@ -14,14 +14,15 @@ class Linkedlist:
 
     def append(self, data):
         new_node = Node(data)
-
-        if self.head is None:
+        # if list is empty
+        if not self.head:
             self.head = new_node
             self.head.next = self.head
-        last_node = self.head
-        while self.head != last_node.next:
-            last_node = last_node.next
-        last_node.next = new_node
+        # if nodes already in list
+        cur = self.head
+        while self.head != cur.next:
+            cur = cur.next
+        cur.next = new_node
         new_node.next = self.head
 
     def prepand(self, data):
@@ -102,22 +103,24 @@ class Linkedlist:
         sec_part_llist.print_list()
 
 
-llist = Linkedlist()
-llist.append("A")
-llist.append("B")
-llist.append("C")
-llist.append("D")
-llist.prepand("V")
-llist.prepand("P")
+# Testing
+# uncomment below codes and test
+# llist = Linkedlist()
+# llist.append("A")
+# llist.append("B")
+# llist.append("C")
+# llist.append("D")
+# llist.prepand("V")
+# llist.prepand("P")
 
-# llist.remove("P")
-# llist.remove("B")
-# llist.remove("D")
+# # llist.remove("P")
+# # llist.remove("B")
+# # llist.remove("D")
 
 
-llist.print_list()
+# llist.print_list()
 
-print()
-llist.len()
+# print()
+# print(llist.len())
 
-llist.split_2list()
+# llist.split_2list()
