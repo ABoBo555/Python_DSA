@@ -17,7 +17,6 @@ class Linkedlist:
         if self.head is None:
             self.head = new_node
             self.head.next = self.head
-
         last_node = self.head
         while self.head != last_node.next:
             last_node = last_node.next
@@ -42,7 +41,7 @@ class Linkedlist:
             print(temp_node.data, end=" ")
             temp_node = temp_node.next
             if temp_node == self.head:
-                return
+                break
 
 
 llist = Linkedlist()
@@ -52,5 +51,5 @@ llist.append("C")
 llist.append("D")
 llist.prepand("V")
 
-
+llist.print_list()
 llist.print_list()
