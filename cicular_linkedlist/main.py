@@ -76,7 +76,30 @@ class Linkedlist:
             node = node.next
             if node == self.head:
                 break
-        print(count)
+        # print(count)
+        return count
+
+    def split_2list(self):
+        length = self.len()
+        mid = length // 2
+        node = self.head
+        count = 0
+        prev = None
+        while node and count < mid:
+            count += 1
+            prev = node
+            node = node.next
+        prev.next = self.head
+
+        sec_part_llist = Linkedlist()
+        while node.next != self.head:
+            sec_part_llist.append(node.data)
+            node = node.next
+        sec_part_llist.append(node.data)
+
+        self.print_list()
+        print()
+        sec_part_llist.print_list()
 
 
 llist = Linkedlist()
@@ -87,12 +110,14 @@ llist.append("D")
 llist.prepand("V")
 llist.prepand("P")
 
-llist.remove("P")
-llist.remove("B")
-llist.remove("D")
+# llist.remove("P")
+# llist.remove("B")
+# llist.remove("D")
 
 
 llist.print_list()
 
 print()
 llist.len()
+
+llist.split_2list()
