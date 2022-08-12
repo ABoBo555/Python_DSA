@@ -5,7 +5,7 @@ def JosephusProblem(n, k):
         return (JosephusProblem(n - 1, k) + k - 1) % n + 1
 
 
-print("JosephusProblem(8,2) = ", end=" ")
+print("JosephusProblem(3,2) = ", end=" ")
 print(JosephusProblem(3, 2))
-print("JosephusProblem(7,3) = ", end=" ")
+print("JosephusProblem(7,100) = ", end=" ")
 print(JosephusProblem(7, 100))
