@@ -1,9 +1,9 @@
-from main import Linkedlist
+from main import Cir_Linkedlist
 
 no_of_nodes = int(input("Enter the number of nodes : "))
 step_size = int(input("Please Enter the step  size : "))
 
-cu_llist = Linkedlist()
+cu_llist = Cir_Linkedlist()
 
 for i in range(1, no_of_nodes + 1):
     cu_llist.append(i)

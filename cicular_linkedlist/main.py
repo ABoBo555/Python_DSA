@@ -8,7 +8,7 @@ class Node:
         # print(self, self.data)
 
 
-class Linkedlist:
+class Cir_Linkedlist:
     def __init__(self):
         self.head = None
 
