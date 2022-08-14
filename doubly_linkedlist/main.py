@@ -33,7 +33,7 @@ class DoublyLinkedList:
     def print_list(self):
         cur = self.head
         while cur:
-            print(cur.data)
+            print(cur.data, end=" ")
             cur = cur.next
 
     def delete_node(self, data):
@@ -68,20 +68,69 @@ class DoublyLinkedList:
     def insert_node_before(self, point, node):
         node = Node(node)
         cur = self.head
-        prev = None
+        previous = None
         if not self.head:
             self.head = node
         else:
             while cur.data != point:
-                prev = cur
+                previous = cur
                 cur = cur.next
             if cur == self.head:
                 self.prepend(node.data)
             else:
-                prev.next = node
-                node.prev = prev
+                previous.next = node
+                node.prev = previous
                 node.next = cur
                 cur.prev = node
+
+    def delete_node_by_value(self, value):
+        cur = self.head
+        previous = None
+        while cur.data != value:
+            previous = cur
+            cur = cur.next
+        if cur == self.head:
+            self.head = self.head.next
+        elif not cur.next:
+            previous.next = None
+        else:
+            previous.next = cur.next
+            cur.next.prev = previous
+
+    def reverse_dllist(self):
+        previous = None
+        cur = self.head
+        while cur:
+            previous = cur
+            cur.next, cur.prev = cur.prev, cur.next
+            cur = cur.prev
+        self.head = previous
+
+    def remove_duplicates(self):
+        cur = self.head
+        previous = None
+        duplicate = list()
+        while cur:
+            if cur.data in duplicate:
+                previous.next = cur.next
+                cur = cur.next
+            else:
+                duplicate.append(cur.data)
+                previous = cur
+                cur = cur.next
+
+    def pairs_with_sum(self, sum):
+        cur1 = self.head
+        cur2 = self.head.next
+        pair = []
+        while cur1 and cur2:
+            while cur2:
+                if (cur1.data + cur2.data) == sum:
+                    pair.append((cur1.data, cur2.data))
+                cur2 = cur2.next
+            cur1 = cur1.next
+            cur2 = cur1.next
+        print(pair)
 
 
 # Testing
@@ -92,10 +141,24 @@ dllist.append(1)
 dllist.append(2)
 dllist.append(3)
 dllist.append(4)
+dllist.append(2)
+dllist.append(1)
 dllist.prepend(5)
 
-dllist.insert_node_before(5, 10)
+# dllist.insert_node_before(5, 10)
 
-dllist.insert_node_after(2, 11)
+# dllist.insert_node_after(2, 11)
+
+# dllist.delete_node_by_value(2)
+
+# dllist.reverse_dllist()
+dllist.print_list()
+print()
+
+dllist.remove_duplicates()
+dllist.print_list()
+print()
+
+dllist.pairs_with_sum(5)
 
 dllist.print_list()
