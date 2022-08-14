@@ -138,6 +138,10 @@ class DoublyLinkedList:
 dllist = DoublyLinkedList()
 dllist.prepend(0)
 dllist.append(1)
+dllist.append(5)
+dllist.append(8)
+dllist.append(4)
+dllist.append(9)
 dllist.append(2)
 dllist.append(3)
 dllist.append(4)
@@ -159,6 +163,6 @@ dllist.remove_duplicates()
 dllist.print_list()
 print()
 
-dllist.pairs_with_sum(5)
+dllist.pairs_with_sum(13)
 
 dllist.print_list()
