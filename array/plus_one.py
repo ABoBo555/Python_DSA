@@ -1,5 +1,5 @@
 # list => 9 9 8
-# plus one the list => 9 9 9
+# plus 1 to the list=> 9 9 9
 #                       +  1
 #                 ------------
 #                    1 0 0 0
@@ -19,8 +19,8 @@ def plus_one(list1):
     return list1
 
 
-list1 = [9, 9, 8]
-# print(plus_one(list1))
+list1 = [9, 9, 9]
+print(plus_one(list1))
 
 
 def pair_of_sum(list1, target):
