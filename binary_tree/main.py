@@ -62,6 +62,23 @@ class Binary_tree(object):
                     is_done = True
         return traversal
 
+    def g_copilot_preorder_iterative(self, start):
+        if not start:
+            return None
+
+        stk = Stack()
+        traversal = ""
+        stk.push(start)
+
+        while stk:
+            node = stk.pop()
+            traversal += str(node.value) + "-"
+            if node.right:
+                stk.push(node.right)
+            if node.left:
+                stk.push(node.left)
+        return traversal
+
     def inorder(self, start, traversal):
         if start:
             traversal = self.inorder(start.left, traversal)
@@ -72,19 +89,15 @@ class Binary_tree(object):
     def iterative_inorder(self, start):
         cur = start
         stk = Stack()
-        is_done = False
         traversal = ""
-        while not is_done:
+        while cur or len(stk) > 0:
             if cur:
                 stk.push(cur)
                 cur = cur.left
             else:
-                if len(stk) > 0:
-                    cur = stk.pop()
-                    traversal += str(cur.value) + "-"
-                    cur = cur.right
-                else:
-                    is_done = True
+                cur = stk.pop()
+                traversal += str(cur.value) + "-"
+                cur = cur.right
         return traversal
 
     def postorder(self, start, traversal):
@@ -105,12 +118,12 @@ class Binary_tree(object):
 
         while stk:
             node = stk.pop()
-            traversal += str(node.value) + "-"
+            traversal.append(str(node.value))
             if node.left:
                 stk.push(node.left)
             if node.right:
                 stk.push(node.right)
-        return "".join(traversal[::-1])
+        return "-".join(traversal[::-1])
 
     def level_order(self, start):
         que = Queue()
