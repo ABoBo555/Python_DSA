@@ -15,6 +15,9 @@ class Stack:
         if not self.is_empty():
             return self.items[-1]
 
+    def __len__(self):
+        return len(self.items)
+
     def get_stack(self):
         return self.items
 

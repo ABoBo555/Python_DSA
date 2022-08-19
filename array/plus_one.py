@@ -1,3 +1,10 @@
+# list => 9 9 8
+# plus one the list => 9 9 9
+#                       +  1
+#                 ------------
+#                    1 0 0 0
+
+
 def plus_one(list1):
 
     list1[-1] += 1

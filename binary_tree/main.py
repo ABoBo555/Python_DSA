@@ -44,11 +44,47 @@ class Binary_tree(object):
             traversal = self.preorder(start.right, traversal)
         return traversal
 
+    def iterative_preorder(self, start):
+        stk = Stack()
+        is_done = False
+        cur = start
+        traversal = ""
+        while not is_done:
+            if cur:
+                traversal += str(cur.value) + "-"
+                stk.push(cur)
+                cur = cur.left
+            else:
+                if len(stk) > 0:
+                    cur = stk.pop()
+                    cur = cur.right
+                else:
+                    is_done = True
+        return traversal
+
     def inorder(self, start, traversal):
         if start:
             traversal = self.inorder(start.left, traversal)
             traversal += str(start.value) + "-"
             traversal = self.inorder(start.right, traversal)
+        return traversal
+
+    def iterative_inorder(self, start):
+        cur = start
+        stk = Stack()
+        is_done = False
+        traversal = ""
+        while not is_done:
+            if cur:
+                stk.push(cur)
+                cur = cur.left
+            else:
+                if len(stk) > 0:
+                    cur = stk.pop()
+                    traversal += str(cur.value) + "-"
+                    cur = cur.right
+                else:
+                    is_done = True
         return traversal
 
     def postorder(self, start, traversal):
@@ -58,6 +94,23 @@ class Binary_tree(object):
             traversal += str(start.value) + "-"
 
         return traversal
+
+    def postorder_iterative(self, start):
+        if not start:
+            return None
+
+        stk = Stack()
+        stk.push(start)
+        traversal = []
+
+        while stk:
+            node = stk.pop()
+            traversal += str(node.value) + "-"
+            if node.left:
+                stk.push(node.left)
+            if node.right:
+                stk.push(node.right)
+        return "".join(traversal[::-1])
 
     def level_order(self, start):
         que = Queue()
@@ -85,11 +138,38 @@ class Binary_tree(object):
                 que.enqueue(node.right)
             if node.left:
                 que.enqueue(node.left)
-        return stack
+        return stack.items[::-1]
 
+    def height(self, start):
+        if start is None:
+            return -1
+        left_height = self.height(start.left)
+        right_height = self.height(start.right)
+        return 1 + max(left_height, right_height)
 
-q = Queue()
-q.enqueue(1)
+    def size_recursize(self, start):
+        if start is None:
+            return 0
+        return 1 + self.size_recursize(start.left) + self.size_recursize(start.right)
+
+    def size_iterative(self):
+        if not start:
+            return None
+
+        stk = Stack()
+        stk.push(self.root)
+        size = 1
+
+        while stk:
+            node = stk.pop()
+            if node.left:
+                size += 1
+                stk.push(node.left)
+            if node.right:
+                size += 1
+                stk.push(node.right)
+        return size
+
 
 tree = Binary_tree(1)
 
@@ -102,13 +182,24 @@ tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
 # print(tree.preorder(tree.root, ""))  # root-left-right
+# print(tree.iterative_preorder(tree.root))  # root-left-right
+
 # print(tree.inorder(tree.root, ""))  # left-root-right
-# print(tree.postorder(tree.root, ""))  # left-right-root
+# print(tree.iterative_inorder(tree.root))  # left-root-right
 
-print(tree.level_order(tree.root))
+print(tree.postorder(tree.root, ""))  # left-right-root
+print(tree.postorder_iterative(tree.root))  # left-right-root
 
-res = tree.reverse_level_order(tree.root)
-print(res.items[::-1])
+
+# print(tree.level_order(tree.root))
+
+# print(tree.reverse_level_order(tree.root))
+
+
+# print("Height of tree :", tree.height(tree.root))
+
+# print(tree.size_recursize(tree.root))
+# print(tree.size_iterative(tree.root))
 
 
 # print(
