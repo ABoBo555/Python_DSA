@@ -200,8 +200,8 @@ tree.root.right.right = Node(7)
 # print(tree.inorder(tree.root, ""))  # left-root-right
 # print(tree.iterative_inorder(tree.root))  # left-root-right
 
-print(tree.postorder(tree.root, ""))  # left-right-root
-print(tree.postorder_iterative(tree.root))  # left-right-root
+# print(tree.postorder(tree.root, ""))  # left-right-root
+# print(tree.postorder_iterative(tree.root))  # left-right-root
 
 
 # print(tree.level_order(tree.root))
