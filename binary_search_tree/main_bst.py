@@ -70,7 +70,7 @@ bst.insert(bst.root, 13)
 
 # print(bst.inorder_bst(bst.root, []))
 print(inorder(bst, bst.root, []))
-print(is_BST(bst))
+print("Is this BST => ", is_BST(bst))
 
 
 # This is not BST
@@ -83,4 +83,4 @@ tree.root.right.left = Node(18)
 tree.root.right.right = Node(7)
 tree.root.left.left.left = Node(3)
 
-print(is_BST(tree))
+print("Is this BST => ", is_BST(tree))
