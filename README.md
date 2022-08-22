@@ -1,10 +1,6 @@
 # Python_DSA
 Data Strucutre and Algorithum using python
 
-Types of problem
+Resources:
 
--Knapsack problem (Dynamic Programming)
-
--Fibonacci problem (using Divide and Conquer method)
-
--Hasttable (Linear Probing method)
+Youtube channel => Lucidprogramming
